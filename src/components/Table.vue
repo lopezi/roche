@@ -58,10 +58,10 @@
     }
     tr {
       border-bottom: 1px solid #ddd;
-    }
-    &.header, &:hover {
-      background-color: #f1f8fe;
-      cursor: pointer;
+      &.header, &:hover {
+        background-color: #f1f8fe;
+        cursor: pointer;
+      }
     }
   }
 </style>
