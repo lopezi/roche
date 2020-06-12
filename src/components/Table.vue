@@ -25,6 +25,11 @@
       mounted() {
           this.$store.dispatch('loadData');
       },
+    methods: {
+      test () {
+        console.log(this.$store.state.covid.Global.NewConfirmed)
+      }
+    },
       computed: {
           ...mapState([
             'covid'

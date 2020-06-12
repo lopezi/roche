@@ -1,6 +1,7 @@
 <template>
     <div class="col-5 arc">
-        <h3>Pie chart</h3>
+        <h3>Global data</h3>
+        {{generatePie()}}
         <div id="arc"></div>
         <a class="button" href="#">CLEAR SELECTED COUNTRY</a>
     </div>
@@ -8,17 +9,27 @@
 
 <script>
     import * as d3 from 'd3'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'PieChart',
         mounted() {
-            this.generatePie();
+            //this.generatePie();
+            this.$store.dispatch('loadData');
+        },
+        computed: {
+        ...mapState([
+                'covid'
+            ])
         },
         methods: {
             generatePie() {
                 let width = 342,
                     height = 342,
-                    margin = 10;
+                    margin = 10,
+                    TotalConfirmed = this.$store.state.covid.Global.TotalConfirmed,
+                    TotalDeaths= this.$store.state.covid.Global.TotalDeaths,
+                    TotalRecovered= this.$store.state.covid.Global.TotalRecovered;
                 // Aux for radius margin
                 let radius = Math.min(width, height) / 2 - margin
 
@@ -29,12 +40,15 @@
                     .append("g")
                     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+
+
                 // data
                 let data = {
-                    a: 11,
-                    b: 22,
-                    c: 33
+                    a: TotalConfirmed,
+                    b: TotalDeaths,
+                    c: TotalRecovered
                 }
+
 
                 // set the color scale
                 let color = d3.scaleOrdinal()
@@ -60,7 +74,6 @@
                     .attr('fill', function (d) {
                         return (color(d.data.key))
                     })
-                    .style("opacity", 1)
             }
         }
     }
