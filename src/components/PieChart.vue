@@ -25,7 +25,7 @@
         methods: {
             generatePie() {
                 let width = 342,
-                    height = 455,
+                    height = 365,
                     margin = 20,
                     TotalConfirmed = this.$store.state.covid.Global.TotalConfirmed,
                     TotalDeaths= this.$store.state.covid.Global.TotalDeaths,
@@ -49,11 +49,11 @@
 
                 // legend
                 svg.append("circle").attr("cx",45).attr("cy",170).attr("r", 6).style("fill", "#bee0fd")
-                svg.append("circle").attr("cx",45).attr("cy",190).attr("r", 6).style("fill", "#74bdf9")
-                svg.append("circle").attr("cx",45).attr("cy",210).attr("r", 6).style("fill", "#309bf8")
+                svg.append("circle").attr("cx",-45).attr("cy",170).attr("r", 6).style("fill", "#74bdf9")
+                svg.append("circle").attr("cx",-160).attr("cy",170).attr("r", 6).style("fill", "#309bf8")
                 svg.append("text").attr("x", 55).attr("y", 170).text("Total confirmed").style("font-size", "12px").attr("alignment-baseline","middle")
-                svg.append("text").attr("x", 55).attr("y", 190).text("Total deaths").style("font-size", "12px").attr("alignment-baseline","middle")
-                svg.append("text").attr("x", 55).attr("y", 210).text("Total recovered").style("font-size", "12px").attr("alignment-baseline","middle")
+                svg.append("text").attr("x", -35).attr("y", 170).text("Total deaths").style("font-size", "12px").attr("alignment-baseline","middle")
+                svg.append("text").attr("x", -150).attr("y", 170).text("Total recovered").style("font-size", "12px").attr("alignment-baseline","middle")
 
 
 
