@@ -25,8 +25,8 @@
         methods: {
             generatePie() {
                 let width = 342,
-                    height = 342,
-                    margin = 10,
+                    height = 455,
+                    margin = 20,
                     TotalConfirmed = this.$store.state.covid.Global.TotalConfirmed,
                     TotalDeaths= this.$store.state.covid.Global.TotalDeaths,
                     TotalRecovered= this.$store.state.covid.Global.TotalRecovered;
@@ -40,14 +40,21 @@
                     .append("g")
                     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-
-
                 // data
                 let data = {
                     a: TotalConfirmed,
                     b: TotalDeaths,
                     c: TotalRecovered
                 }
+
+                // legend
+                svg.append("circle").attr("cx",45).attr("cy",170).attr("r", 6).style("fill", "#bee0fd")
+                svg.append("circle").attr("cx",45).attr("cy",190).attr("r", 6).style("fill", "#74bdf9")
+                svg.append("circle").attr("cx",45).attr("cy",210).attr("r", 6).style("fill", "#309bf8")
+                svg.append("text").attr("x", 55).attr("y", 170).text("Total confirmed").style("font-size", "12px").attr("alignment-baseline","middle")
+                svg.append("text").attr("x", 55).attr("y", 190).text("Total deaths").style("font-size", "12px").attr("alignment-baseline","middle")
+                svg.append("text").attr("x", 55).attr("y", 210).text("Total recovered").style("font-size", "12px").attr("alignment-baseline","middle")
+
 
 
                 // set the color scale
